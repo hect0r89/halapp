@@ -1,15 +1,10 @@
 package master.android.agenda;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.test.runner.lifecycle.ActivityLifecycleCallback;
-import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
-import android.support.test.runner.lifecycle.Stage;
-import android.view.WindowManager;
 
 import org.junit.After;
 import org.junit.Before;
@@ -32,15 +27,6 @@ public class CreateContactTest {
 
     @Before
     public void setup() {
-        ActivityLifecycleMonitorRegistry.getInstance().addLifecycleCallback(new ActivityLifecycleCallback() {
-            @Override
-            public void onActivityLifecycleChanged(Activity activity, Stage stage) {
-                if (stage == Stage.PRE_ON_CREATE) {
-                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                }
-            }
-        });
-
         Intents.init();
     }
 
